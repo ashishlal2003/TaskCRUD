@@ -7,7 +7,7 @@ import classes from './EditProfileForm.module.scss';
 
 function EditProfileForm() {
   const [user, setUser] = useState({
-    name: '',
+    username: '',
     email: '',
   });
 
@@ -27,7 +27,7 @@ function EditProfileForm() {
   const updateUserInfo = (e) => {
     setUser({
       ...user,
-      [e.target.name]: e.target.value,
+      [e.target.username]: e.target.value,
     });
   };
 
@@ -51,14 +51,14 @@ function EditProfileForm() {
       <div>
         <h1>Edit Profile</h1>
         <form className={classes.editForm} onSubmit={updateProfile}>
-          <label htmlFor="name">
+          <label htmlFor="username">
             Full Name:
             <input
-              name="name"
+              name="username"
               type="text"
               placeholder="Full Name"
               required
-              value={user.name}
+              value={user.username}
               onChange={updateUserInfo}
             />
           </label>

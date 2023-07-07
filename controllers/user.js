@@ -20,3 +20,14 @@ export const updateUserInfo = async (req, res, next) => {
         return next(error);
     }
 }
+
+// GET /api/users
+
+export const getAllUsers = async (req, res, next) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (err) {
+      next(err);
+    }
+  };

@@ -36,19 +36,27 @@ function Register() {
         </label>
         <br />
         <label htmlFor="password">
-          password:
+        password:
           <input
             name="password"
             type="password"
             placeholder="password"
+            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+){6,}$"
+            title="Password must be alphanumeric and at least 6 characters long"
             required
           />
+
         </label>
         <br />
         <button type="submit">Register</button>
       </form>
       <Link to="/login" className={classes.editBtn}>
             Already have an account? Login
+          </Link>
+          <br />
+          <br />
+          <Link to="/admin" className={classes.editBtn}>
+            Admin? Login as admin.
           </Link>
     </div>
   );

@@ -14,12 +14,19 @@ function Login() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     try {
-      await axios.post('/api/auth/login', {
-        email,
-        password,
-      });
-      navigate('/');
-      toast.success('Login successful');
+    //   await axios.post('/api/auth/login', {
+    //     email,
+    //     password,
+    //   });
+      if(email === 'admin@admin.com' && password === 'admin'){
+        navigate('/admin-dashboard');
+        toast.success('Login successful');
+      }
+
+      else{
+        toast.error('Invalid credentials');
+      }
+      
     } catch (err) {
       console.log(err);
       toast.error('Login failed: ' + err.message);
@@ -27,7 +34,7 @@ function Login() {
   };
   return (
     <div className={classes.register}>
-      <h1 className={classes.title}>Login</h1>
+      <h1 className={classes.title}>Admin Login</h1>
       <form className={classes.authForm} onSubmit={login}>
         <label htmlFor="email">
           email:
@@ -46,13 +53,8 @@ function Login() {
         <br />
         <button type="submit">Login</button>
       </form>
-      <Link to="/signup" className={classes.editBtn}>
-            Create an account!
-          </Link>
-          <br />
-          <br />
-          <Link to="/admin" className={classes.editBtn}>
-            Admin? Login as admin.
+      <Link to="/login" className={classes.editBtn}>
+            Normal user? Click here
           </Link>
     </div>
   );
